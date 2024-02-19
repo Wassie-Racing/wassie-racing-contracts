@@ -163,7 +163,7 @@ contract WassieRacing is Ownable, RrpRequesterV0 {
     event NextGameOdds(uint256 oddsA, uint256 oddsB, uint256 oddsC, uint256 oddsD);
     event RequestedUint256(bytes32 indexed requestId); //qrng
     event ReceivedUint256(bytes32 indexed requestId, uint256 response); //qrng
-    event PoolChanges(address indexed token, Option indexed winner, uint256 indexed raceId, uint256 winnings, uint256 bets);
+    event PoolChange(address indexed token, Option indexed winner, uint256 indexed raceId, uint256 winnings, uint256 bets);
     event HouseDeposit(address indexed user, address indexed token, uint256 amount);
     event HouseWithdraw(address indexed user, address indexed token, uint256 amount);
 
@@ -464,7 +464,7 @@ contract WassieRacing is Ownable, RrpRequesterV0 {
                     delete bettingPools[bKey];
                     delete bettingPools[cKey];
                 }
-                emit PoolChanges(token, winner, raceId, winnings, _totalBetsByToken[token]);
+                emit PoolChange(token, winner, raceId, winnings, _totalBetsByToken[token]);
             }
         } 
     }
